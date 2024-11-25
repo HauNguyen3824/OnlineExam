@@ -1,19 +1,3 @@
-<?php
-	require_once("method/database.php");
-	ob_start();
-	if (session_status() == PHP_SESSION_NONE) {
-    	session_start();
-	}
-
-	$is_logged_in = isset($_SESSION['user_id']);
-	if ($is_logged_in) {
-    	$user_id = $_SESSION['user_id'];
-    	$username = isset($_SESSION['username']) ? $_SESSION['username'] : '';//Sua thanh cap nhat ten lai neu co thay doi
-    	$user_type = $_SESSION['user_type'];
-		$user_fullname = $_SESSION['user_fullname'];
-    	//$user_type = 'admin';
-	}
-?>
 
 <div class="site-mobile-menu site-navbar-target">
 		<div class="site-mobile-menu-header">
@@ -38,20 +22,20 @@
 							<ul class="js-clone-nav d-none d-lg-inline-block text-start site-menu mx-auto fw-bold">
 								<li class="active"><a href="index.php">TRANG CHỦ</a></li>
 								<li class="has-children">
-									<a href="#">CHẾ ĐỘ</a>
+									<a href="#">TRANG</a>
 									<ul class="dropdown">
 										<?php if($is_logged_in): 
 											if($user_type == 0 && $user_type != 2): ?>
 												<li class="fw-normal" style="width:fit-content;"><a href="QuanLyNguoiDung.php">Quản lý người dùng</a></li>
 											<?php endif; ?>
 											<?php if($user_type == 2 || $user_type == 0): ?>
-												<li class="fw-normal" style="width:fit-content;"><a href="<?php echo $is_logged_in? 'TaoDeThi.php' : 'DangNhap.php' ?>">Tạo đề thi / cuộc thi</a></li>
-												<li class="fw-normal" style="width:fit-content;"><a href="<?php echo $is_logged_in? 'questionsBank.php' : 'DangNhap.php' ?>">Quản lý ngân hàng câu hỏi</a></li>
-												<li class="fw-normal" style="width:fit-content;"><a href="<?php echo $is_logged_in? 'QuanLyDeThi.php' : 'DangNhap.php' ?>">Quản lý đề thi / cuộc thi</a></li>
+												<li class="fw-normal" style="width:fit-content;"><a href="<?php echo $is_logged_in? 'TaoDeThi.php' : 'DangNhap.php' ?>">Tạo Đề Thi</a></li>
+												<li class="fw-normal" style="width:fit-content;"><a href="<?php echo $is_logged_in? 'questionsBank.php' : 'DangNhap.php' ?>">Ngân Hàng Đề Thi</a></li>
+												<li class="fw-normal" style="width:fit-content;"><a href="<?php echo $is_logged_in? 'QuanLyDeThi.php' : 'DangNhap.php' ?>">Ngân Hàng Câu Hỏi</a></li>
 											<?php endif; ?>
 										<?php endif; ?>
-										<li class="fw-normal" style="width:fit-content;"><a href="<?php echo $is_logged_in? 'LichSuCuocThi.php' : 'DangNhap.php' ?>">Lịch sử cuộc thi</a></li>
-										<li class="fw-normal" style="width:fit-content;"><a href="<?php echo $is_logged_in? 'ThamGiaThi.php' : 'DangNhap.php' ?>">Tham gian cuộc thi</a></li>
+										<li class="fw-normal" style="width:fit-content;"><a href="<?php echo $is_logged_in? 'LichSuCuocThi.php' : 'DangNhap.php' ?>">Thống Kê</a></li>
+
 									</ul>
 								</li>
 								<li><a href="LienHe.php">LIÊN HỆ</a></li>

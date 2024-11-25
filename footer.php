@@ -3,8 +3,9 @@
 		<div class="row">
 			<div class="col-lg-4">
 				<div class="widget">
-					<h3>THÔNG TIN</h3>
-					<p>Nền tảng của chúng tôi giúp đơn giản hóa quá trình tạo đề thi, cho phép bạn thiết kế các bài kiểm tra trắc nghiệm tùy chỉnh một cách dễ dàng và hiệu quả.</p>
+					<h3>OnlineExam
+					</h3>
+					<p>Nền tảng hỗ trợ tạo, quản lý và tổ chức các kỳ thi trực tuyến nhanh chóng, tiện lợi và hiệu quả.</p>
 				</div> 
 				<div class="widget">
 					<ul class="list-unstyled links">
@@ -19,12 +20,12 @@
 					<ul class="js-clone-nav d-none d-lg-inline-block text-start site-menu mx-auto fw-bold">
 						<li class="active"><a href="index.php">TRANG CHỦ</a></li>
 						<li class="has-children">
-							<a href="#">CHẾ ĐỘ</a>
+							<a href="#">TRANG</a>
 							<ul class="dropdown">
-								<li class="fw-normal"><a href="TaoDeThi.php">Tạo đề thi / cuộc thi</a></li>
-								<li class="fw-normal"><a href="QuanLyNguoiDung.php">Quản lý người dùng</a></li>
-								<li class="fw-normal"><a href="questionsBank.php">Quản lý ngân hàng câu hỏi</a></li>
-								<li class="fw-normal"><a href="QuanLyDeThi.php">Quản lý đề thi / cuộc thi</a></li>
+								<li class="fw-normal"><a href="TaoDeThi.php">Tạo đề thi</a></li>
+								<li class="fw-normal"><a href="QuanLyNguoiDung.php">Ngân Hàng Đề Thi</a></li>
+								<li class="fw-normal"><a href="questionsBank.php">Ngân Hàng Câu Hỏi</a></li>
+								<li class="fw-normal"><a href="QuanLyDeThi.php">Thống Kê</a></li>
 								<li class="fw-normal"><a href="LichSuCuocThi.php">Lịch sử cuộc thi</a></li>
 								<li class="fw-normal"><a href="ThamGiaThi.php">Tham gia cuộc thi</a></li>
 							</ul>
