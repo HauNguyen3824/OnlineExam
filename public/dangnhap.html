@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+  <title>Trang đăng nhập - Tạo đề thi trắc nghiệm</title>
+  <meta name="description" content="">
+  <meta name="keywords" content="">
+
+  
+  
+  <!-- Fonts -->
+  <link href="https://fonts.googleapis.com" rel="preconnect">
+  <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&family=Montserrat:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+
+  <!-- Vendor CSS Files -->
+  <link href="../template/assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <link href="../template/assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+  <link href="../template/assets/vendor/aos/aos.css" rel="stylesheet">
+  <link href="../template/assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
+  <link href="../template/assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
+
+  <!-- Main CSS File -->
+  <link href="../template/assets/css/main.css" rel="stylesheet">
+
+  <!-- =======================================================
+  * Template Name: Impact
+  * Template URL: https://bootstrapmade.com/impact-bootstrap-business-website-template/
+  * Updated: Aug 07 2024 with Bootstrap v5.3.3
+  * Author: BootstrapMade.com
+  * License: https://bootstrapmade.com/license/
+  ======================================================== -->
+</head>
+
+<body class="index-page">
+
+  <header id="header" class="header fixed-top">
+
+    <div class="topbar d-flex align-items-center">
+      <div class="container d-flex justify-content-center justify-content-md-between">
+        
+      </div>
+    </div><!-- End Top Bar -->
+
+<body>
+    <!-- Form đăng ký -->
+    <div class="container mt-5">
+        <div class="row justify-content-center">
+            <div class="col-md-6">
+                <form class="border p-4 bg-light" method="post" action="dangnhap.php">
+                    <h2 class="text-center" style="color: #256b37;">Đăng nhập</h2>
+
+                    <!-- Tên đăng nhập -->
+                    <div class="form-group">
+                        <label for="username">Tên đăng nhập</label>
+                        <input type="text" class="form-control" name="username" id="username" placeholder="Tên đăng nhập">
+                    </div>
+
+                    <!-- Mật khẩu -->
+                    <div class="form-group">
+                        <label for="mk">Mật khẩu</label>
+                        <input type="password" class="form-control" name="password" id="mk" placeholder="Mật khẩu">
+                    </div>
+
+                    <!-- Hiển thị mật khẩu -->
+                    <div class="form-group form-check">
+                        <input type="checkbox" class="form-check-input" id="showPassword" onclick="togglePasswordVisibility()">
+                        <label class="form-check-label" for="showPassword">Hiển thị mật khẩu</label>
+                    </div>
+
+                    <!-- Nút đăng nhập -->
+                    <center><button type="submit" class="btn btn-primary btn-block" name="dangnhap" style="background-color: #256b37; color: #f5f5f5;">Đăng nhập</button></center>
+
+                    <!-- Đăng ký -->
+                    <p class="text-center mt-3">
+                        Bạn chưa có tài khoản? <a href="dangky.html" class="text-primary">Đăng ký</a>
+                    </p>
+                    <p class="text-center mt-3">
+                     <a href="../index.php" class="text-primary">Trang Chủ</a>
+                    </p>
+
+                    
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function togglePasswordVisibility() {
+            const passwordField1 = document.getElementById("mk");
+            if (passwordField1.type === "password") passwordField1.type = "text";
+            else passwordField1.type = "password";
+        }
+        function ktThongTin() {
+            alert("Hãy đăng nhập");
+        }
+    </script>
+
+    <!-- Bootstrap JavaScript -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>
