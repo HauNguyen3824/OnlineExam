@@ -65,9 +65,9 @@
             <li class="dropdown"><a href="#"><span>Trang</span> <i class="bi bi-chevron-down toggle-dropdown"></i></a>
               <ul>
                 <li><a href="controller/taode.php">Tạo Đề</a></li>
-                <li><a href="#">Ngân Hàng Đề Thi</a></li>
-                <li><a href="#">Ngân Hàng Câu Hỏi</a></li>
-                <li><a href="#">Thống Kê</a></li>
+                <li><a href="Nganhangdethi.php">Ngân Hàng Đề Thi</a></li>
+                <li><a href="Nganhangcauhoi.php">Ngân Hàng Câu Hỏi</a></li>
+                <li><a href="Thongke.php">Thống Kê</a></li>
               </ul>
             </li>
         </li>
@@ -114,21 +114,21 @@
             <div class="col-xl-3 col-md-6">
               <div class="icon-box">
                 <div class="icon"><i class="bi bi-gem"></i></div>
-                <h4 class="title"><a href="" class="stretched-link">Ngân Hàng Đề Thi</a></h4>
+                <h4 class="title"><a href="Nganhangdethi.php" class="stretched-link">Ngân Hàng Đề Thi</a></h4>
               </div>
             </div><!--End Icon Box -->
 
             <div class="col-xl-3 col-md-6">
               <div class="icon-box">
                 <div class="icon"><i class="bi bi-geo-alt"></i></div>
-                <h4 class="title"><a href="" class="stretched-link">Ngân Hàng Câu Hỏi</a></h4>
+                <h4 class="title"><a href="Nganhangcauhoi.php" class="stretched-link">Ngân Hàng Câu Hỏi</a></h4>
               </div>
             </div><!--End Icon Box -->
 
             <div class="col-xl-3 col-md-6">
               <div class="icon-box">
                 <div class="icon"><i class="bi bi-command"></i></div>
-                <h4 class="title"><a href="" class="stretched-link">Thống Kê</a></h4>
+                <h4 class="title"><a href="Thongke.php" class="stretched-link">Thống Kê</a></h4>
               </div>
             </div><!--End Icon Box -->
 
