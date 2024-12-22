@@ -1,266 +1,208 @@
+<!DOCTYPE html>
+<html lang="en">
 <head>
-        <meta charset="utf-8">
-        <meta content="width=device-width, initial-scale=1.0" name="viewport">
-        <title>OnlineExam</title>
-        <meta name="description" content="">
-        <meta name="keywords" content="">
-      
-        
-        
-        <!-- Fonts -->
-        <link href="https://fonts.googleapis.com" rel="preconnect">
-        <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin>
-        <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&family=Montserrat:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
-      
-        <!-- Vendor CSS Files -->
-        <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-        <link href="assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
-        <link href="assets/vendor/aos/aos.css" rel="stylesheet">
-        <link href="assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
-        <link href="assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
-      
-        <!-- Main CSS File -->
-        <link href="assets/css/main.css" rel="stylesheet">
-      
-        <!-- =======================================================
-        * Template Name: Impact
-        * Template URL: https://bootstrapmade.com/impact-bootstrap-business-website-template/
-        * Updated: Aug 07 2024 with Bootstrap v5.3.3
-        * Author: BootstrapMade.com
-        * License: https://bootstrapmade.com/license/
-        ======================================================== -->
-      </head>
-      
-      <body class="index-page">
-      
-        <header id="header" class="header fixed-top">
-      
-          <div class="topbar d-flex align-items-center">
-            <div class="container d-flex justify-content-center justify-content-md-between">
-        
-            </div>
-          </div><!-- End Top Bar -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tạo Đề Thi</title>
     <style>
-        :root {
-            --primary-color: #2563eb;
-            --secondary-color: #1e40af;
-            --background-color: #f0f9ff;
-            --text-color: #1e293b;
-            --border-color: #bfdbfe;
-            --error-color: #ef4444;
-        }
-
-        /* body {
-            font-family: 'Segoe UI', system-ui, sans-serif;
-            background-color: var(--background-color);
-            color: var(--text-color);
+        body {
+            font-family: Arial, sans-serif;
             margin: 0;
-            padding: 20px;
-            min-height: 100vh;
-        } */
-
-        body>.container {
-            max-width: 1000px;
-            margin: 0 auto;
-            background-color: white;
-            padding: 2rem;
-            border-radius: 12px;
-            box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1);
+            padding: 0;
+            background-color: #f4f4f4;
+            color: #333;
         }
 
-        h1 {
+        header {
+            background-color: #355e3b; /* Màu xanh rêu */
+            color: white;
+            padding: 1rem;
             text-align: center;
+            font-size: 1.5rem;
         }
 
-        .form-group {
-            margin-bottom: 1.5rem;
+        .container {
+            max-width: 800px;
+            margin: 2rem auto;
+            padding: 1rem;
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
         }
 
-        .form-row {
+        h2 {
+            color: #355e3b;
+            margin-bottom: 1rem;
+        }
+
+        form {
             display: flex;
-            gap: 1rem;
-            margin-bottom: 1.5rem;
-        }
-
-        .form-row > * {
-            flex: 2;
+            flex-direction: column;
         }
 
         label {
-            display: block;
-            margin-bottom: 0.5rem;
-            font-weight: 500;
-            color: var(--text-color);
+            margin: 0.5rem 0 0.25rem;
+            color: #355e3b;
         }
 
-        select, input {
-            width: 100%;
-            padding: 0.75rem;
-            border: 1px solid var(--border-color);
-            border-radius: 6px;
-            font-size: 1rem;
-            transition: all 0.2s;
-        }
-
-        select:focus, input:focus {
-            outline: none;
-            border-color: var(--primary-color);
-            box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
-        }
-
-        .difficulty-section {
-            background-color: #f8fafc;
-            padding: 1.5rem;
-            border-radius: 8px;
-            margin-bottom: 1.5rem;
-        }
-
-        .difficulty-title {
-            font-weight: 600;
+        input, select, button {
+            padding: 0.5rem;
             margin-bottom: 1rem;
-            color: var(--primary-color);
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            font-size: 1rem;
         }
 
-        .password-section {
-            display: none;
-            animation: fadeIn 0.3s ease-in-out;
-        }
-
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(-10px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-
-        .btn {
-            display: block;
-            width: 100%;
-            padding: 1rem;
-            background-color: var(--primary-color);
+        button {
+            background-color: #355e3b;
             color: white;
             border: none;
-            border-radius: 6px;
-            font-size: 1rem;
-            font-weight: 500;
             cursor: pointer;
-            transition: background-color 0.2s;
         }
 
-        .btn:hover {
-            background-color: var(--secondary-color);
+        button:hover {
+            background-color: #2d4f33;
         }
 
-        .error {
-            color: var(--error-color);
-            font-size: 0.875rem;
-            margin-top: 0.25rem;
+        .test-list {
+            margin-top: 2rem;
         }
 
-        .total-questions {
-            text-align: right;
-            font-weight: 500;
-            margin-top: 0.5rem;
-            color: var(--primary-color);
+        .test-list table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        .test-list th, .test-list td {
+            border: 1px solid #ddd;
+            padding: 0.75rem;
+            text-align: left;
+        }
+
+        .test-list th {
+            background-color: #355e3b;
+            color: white;
+        }
+
+        .action-buttons button {
+            margin-right: 0.5rem;
+            padding: 0.5rem 1rem;
+            border-radius: 4px;
+        }
+
+        .edit-btn {
+            background-color: #4caf50;
+            color: white;
+        }
+
+        .delete-btn {
+            background-color: #f44336;
+            color: white;
         }
     </style>
+</head>
+<body>
+    <header>
+        Tạo Đề Thi
+    </header>
 
-	<div class="section" id="content">
-		<div class="container">
-		<h1>Tạo Đề Thi</h1>
-        <form id="examForm" onsubmit="handleSubmit(event)">
-            <div class="form-row">
-                <div class="form-group">
-                    <label for="examName">Tên đề thi:</label>
-                    <input type="text" id="examName" name="examName" required>
-                </div>
-                <div class="form-group">
-                    <label for="school">Trường:</label>
-                    <input type="text" id="school" name="school" required>
-                </div>
-            </div>
+    <div class="container">
+        <h2>Thông Tin Đề Thi</h2>
+        <form id="create-test-form">
+            <label for="test-name">Tên đề thi:</label>
+            <input type="text" id="test-name" name="test-name" required>
 
-            <div class="form-row">
-                <div class="form-group">
-                    <label for="subject">Môn học:</label>
-                    <select id="subject" name="subject" required>
-                        <option value="">-- Chọn môn học --</option>
-                        <option value="toan">Toán</option>
-                        <option value="ly">Vật lý</option>
-                        <option value="hoa">Hóa học</option>
-                        <option value="sinh">Sinh học</option>
-                        <option value="anh">Tiếng Anh</option>
-                        <option value="van">Ngữ văn</option>
-                    </select>
-                </div>
-                <div class="form-group">
-                    <label for="duration">Thời gian làm bài (phút):</label>
-                    <input type="number" id="duration" name="duration" min="15" max="180" value="60" required>
-                </div>
-            </div>
+            <label for="subject">Môn học:</label>
+            <select id="subject" name="subject" required>
+                <option value="Toán">Toán</option>
+                <option value="Lý">Lý</option>
+                <option value="Hóa">Hóa</option>
+                <option value="Sinh">Sinh</option>
+            </select>
 
-            <div class="form-row">
-                <div class="form-group">
-                    <label for="examDate">Ngày làm bài:</label>
-                    <input type="datetime-local" id="examDate" name="examDate" required>
-                </div>
-                <div class="form-group">
-                    <label for="questionBank">Thư viện đề thi:</label>
-                    <select id="questionBank" name="questionBank" required>
-                        <option value="">-- Chọn thư viện --</option>
-                        <option value="bank1">Đề thi THPT Quốc gia</option>
-                        <option value="bank2">Đề thi học kì</option>
-                        <option value="bank3">Đề thi thử nghiệm</option>
-                    </select>
-                </div>
-            </div>
+            <label for="difficulty">Độ khó:</label>
+            <select id="difficulty" name="difficulty" required>
+                <option value="Dễ">Dễ</option>
+                <option value="Trung Bình">Trung Bình</option>
+                <option value="Khó">Khó</option>
+            </select>
 
-            <div class="form-group">
-                <label for="totalQuestions">Tổng số câu hỏi:</label>
-                <input type="number" id="totalQuestions" name="totalQuestions" min="1" max="100" value="40" required onchange="updateDifficultyLimits()">
-            </div>
+            <label for="num-questions">Số lượng câu hỏi:</label>
+            <input type="number" id="num-questions" name="num-questions" required>
 
-            <div class="difficulty-section">
-                <div class="difficulty-title">Phân bố độ khó</div>
-                <div class="form-row">
-                    <div class="form-group">
-                        <label for="easyQuestions">Số câu dễ:</label>
-                        <input type="number" id="easyQuestions" name="easyQuestions" min="0" value="16" onchange="validateDifficultyDistribution()">
-                    </div>
-                    <div class="form-group">
-                        <label for="mediumQuestions">Số câu trung bình:</label>
-                        <input type="number" id="mediumQuestions" name="mediumQuestions" min="0" value="16" onchange="validateDifficultyDistribution()">
-                    </div>
-                    <div class="form-group">
-                        <label for="hardQuestions">Số câu khó:</label>
-                        <input type="number" id="hardQuestions" name="hardQuestions" min="0" value="8" onchange="validateDifficultyDistribution()">
-                    </div>
-                </div>
-                <div class="total-questions" id="questionDistributionTotal" max-value="" value="">
-                    Tổng: 40/40 câu
-                </div>
-            </div>
-
-            <div class="form-row">
-                <div class="form-group">
-                    <label for="examMode">Chế độ tạo:</label>
-                    <select id="examMode" name="examMode" required onchange="togglePasswordField()">
-                        <option value="contest">Contest</option>
-                        <option value="pdf">PDF</option>
-                    </select>
-                </div>
-                <div class="form-group password-section" id="passwordSection">
-                    <label for="password">Mật khẩu:</label>
-                    <input type="password" id="password" name="password">
-                </div>
-            </div>
-
-            <button type="submit" class="btn">Tạo đề thi</button>
+            <button type="submit">Tạo Đề Thi</button>
         </form>
-		</div>
-	</div>
-    <script src="./js/createExam.js"></script>
 
-	<?php
-		include 'footer.php';
+        <div class="test-list">
+            <h2>Danh Sách Đề Thi</h2>
+            <table id="test-table">
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Tên Đề Thi</th>
+                        <th>Môn Học</th>
+                        <th>Độ Khó</th>
+                        <th>Số Câu Hỏi</th>
+                        <th>Hành Động</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <!-- Danh sách đề thi sẽ được thêm ở đây -->
+                </tbody>
+            </table>
+        </div>
+    </div>
 
-	?>
+    <footer>
+        &copy;  Nhóm 6 OnlineExam
+    </footer>
+
+    <script>
+        const form = document.getElementById('create-test-form');
+        const testTableBody = document.getElementById('test-table').getElementsByTagName('tbody')[0];
+
+        let testId = 1; // ID tự tăng cho mỗi đề thi
+
+        form.addEventListener('submit', function (event) {
+            event.preventDefault();
+
+            const testName = document.getElementById('test-name').value;
+            const subject = document.getElementById('subject').value;
+            const difficulty = document.getElementById('difficulty').value;
+            const numQuestions = document.getElementById('num-questions').value;
+
+            addTestToTable(testId++, testName, subject, difficulty, numQuestions);
+            alert(`Đề thi "${testName}" đã được tạo thành công.`);
+            form.reset();
+        });
+
+        function addTestToTable(id, name, subject, difficulty, numQuestions) {
+            const row = testTableBody.insertRow();
+            row.innerHTML = `
+                <td>${id}</td>
+                <td>${name}</td>
+                <td>${subject}</td>
+                <td>${difficulty}</td>
+                <td>${numQuestions}</td>
+                <td>
+                    <div class="action-buttons">
+                        <button class="edit-btn" onclick="editTest(${id})">Sửa</button>
+                        <button class="delete-btn" onclick="deleteTest(this)">Xóa</button>
+                    </div>
+                </td>`;
+        }
+
+        function editTest(id) {
+            alert(`Chỉnh sửa đề thi với ID: ${id}`);
+            // Logic chỉnh sửa đề thi có thể thêm ở đây
+        }
+
+        function deleteTest(button) {
+            const row = button.parentElement.parentElement.parentElement;
+            if (confirm('Bạn có chắc chắn muốn xóa đề thi này?')) {
+                row.remove();
+            }
+        }
+    </script>
+</body>
 </html>

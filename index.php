@@ -64,7 +64,7 @@
             <li><a href="#hero" class="active">Trang Chủ<br></a></li>
             <li class="dropdown"><a href="#"><span>Trang</span> <i class="bi bi-chevron-down toggle-dropdown"></i></a>
               <ul>
-                <li><a href="controller/taode.php">Tạo Đề</a></li>
+                <li><a href="TaoDeThi.php">Tạo Đề</a></li>
                 <li><a href="Nganhangdethi.php">Ngân Hàng Đề Thi</a></li>
                 <li><a href="Nganhangcauhoi.php">Ngân Hàng Câu Hỏi</a></li>
                 <li><a href="Thongke.php">Thống Kê</a></li>
@@ -107,7 +107,7 @@
             <div class="col-xl-3 col-md-6">
               <div class="icon-box">
                 <div class="icon"><i class="bi bi-easel"></i></div>
-                <h4 class="title"><a href="controller/taode.php" class="stretched-link">Tạo Đề</a></h4>
+                <h4 class="title"><a href="TaoDeThi.php" class="stretched-link">Tạo Đề</a></h4>
               </div>
             </div><!--End Icon Box -->
 
