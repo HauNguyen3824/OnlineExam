@@ -1,0 +1,86 @@
+-- Tạo cơ sở dữ liệu
+CREATE DATABASE IF NOT EXISTS OnlineExam;
+USE OnlineExam;
+
+-- Tạo bảng Users
+CREATE TABLE IF NOT EXISTS Users (
+    UserId VARCHAR(10) NOT NULL PRIMARY KEY,
+    FullName VARCHAR(100) NOT NULL,
+    Username VARCHAR(100) NOT NULL,
+    Password VARCHAR(100) NOT NULL,
+    Email VARCHAR(100),
+    Phone INT,
+    Role VARCHAR(100) NOT NULL,
+    Class INT,
+    Year INT
+) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
+
+-- Tạo bảng Questions
+CREATE TABLE IF NOT EXISTS Questions (
+    QuesId VARCHAR(10) NOT NULL PRIMARY KEY,
+    QuesTitle TEXT NOT NULL,
+    Difficult VARCHAR(100),
+    Answer1 TEXT,
+    Answer2 TEXT,
+    Answer3 TEXT,
+    Answer4 TEXT,
+    Correct VARCHAR(10),
+    Class INT,
+    Subject VARCHAR(100),
+) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
+
+-- Tạo bảng Exams
+CREATE TABLE IF NOT EXISTS Exams (
+    ExamId VARCHAR(10) NOT NULL PRIMARY KEY,
+    ExamTitle TEXT NOT NULL,
+    Duration DATETIME NOT NULL,
+    NumOfQues INT NOT NULL,
+    Subject VARCHAR(50),
+    Difficult VARCHAR(50)
+) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
+
+-- Tạo bảng UserAnswers
+CREATE TABLE IF NOT EXISTS UserAnswers (
+    AnsId VARCHAR(10) NOT NULL PRIMARY KEY,
+    UserChoice VARCHAR(10) NOT NULL,
+    IsCorrect BOOLEAN NOT NULL,
+    QuesId VARCHAR(10) NOT NULL,
+    AUId VARCHAR(10) NOT NULL
+    FOREIGN KEY (QuesId) REFERENCES Questions(QuesId) ON DELETE CASCADE ON UPDATE CASCADE
+) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
+
+-- Tạo bảng AddQues
+CREATE TABLE IF NOT EXISTS AddQues (
+    AQId VARCHAR(10) NOT NULL PRIMARY KEY,
+    ExamId VARCHAR(10) NOT NULL,
+    QuesId VARCHAR(10) NOT NULL,
+    FOREIGN KEY (ExamId) REFERENCES Exams(ExamId) ON DELETE CASCADE ON UPDATE CASCADE,
+    FOREIGN KEY (QuesId) REFERENCES Questions(QuesId) ON DELETE CASCADE ON UPDATE CASCADE
+) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
+
+-- Tạo bảng AddUser
+CREATE TABLE IF NOT EXISTS AddUser (
+    AUId VARCHAR(10) NOT NULL PRIMARY KEY,
+    ExamId VARCHAR(10) NOT NULL,
+    UserId VARCHAR(10) NOT NULL,
+    FOREIGN KEY (ExamId) REFERENCES Exams(ExamId) ON DELETE CASCADE ON UPDATE CASCADE,
+    FOREIGN KEY (UserId) REFERENCES Users(UserId) ON DELETE CASCADE ON UPDATE CASCADE
+) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
+
+-- Tạo bảng Results
+CREATE TABLE IF NOT EXISTS Results (
+    ResultId VARCHAR(10) NOT NULL PRIMARY KEY,
+    AUId VARCHAR(10) NOT NULL,
+    Score INT NOT NULL,
+    TimeStart DATETIME NOT NULL,
+    TimeSubmit DATETIME NOT NULL,
+    FOREIGN KEY (AUId) REFERENCES AddUser(AUId) ON DELETE CASCADE ON UPDATE CASCADE
+) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
+
+-- Tạo bảng chat
+CREATE TABLE IF NOT EXISTS chat (
+    ChatId VARCHAR(10) NOT NULL PRIMARY KEY,
+    Content TEXT NOT NULL,
+    Seen BOOLEAN NOT NULL DEFAULT 0,
+    UserId VARCHAR(10) NOT NULL
+) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
