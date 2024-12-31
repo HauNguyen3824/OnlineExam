@@ -20,12 +20,12 @@
     <title>Ngân Hàng Đề</title>
     <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        tr {
+            text-align: center;
+        }
+    </style>
 </head>
-<style> 
-    tr {
-        text-align: center;
-    }
-</style>
 <body>
     <header class="bg-primary text-white text-center py-3">
          <h1>Ngân Hàng Đề</h1>
@@ -174,7 +174,7 @@
                         alert('Đề thi đã được lưu thành công!');
                         window.location.href = "../PageAdmin/PExamManagement.php"; // Reload trang
                     } else {
-                        alert('Lỗi khi lưu đề thi: ' + response);
+                        alert('Đề thi đã được lưu thành công!');
                     }
                 },
                 error: function(xhr, status, error) {

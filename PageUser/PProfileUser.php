@@ -39,6 +39,9 @@ $user = $result_user->fetch_assoc();
             display: flex;
             justify-content: space-between;
         }
+        tr {
+            text-align: center;
+        }
     </style>
 </head>
 <body>
@@ -73,12 +76,49 @@ $user = $result_user->fetch_assoc();
                 <td><?= htmlspecialchars($user['year']) ?></td>
             </tr>
         </table>
-        <center><a href="PEditInfo.php?userId=<?= htmlspecialchars($userId) ?>" class="btn btn-primary">Thay đổi thông tin</a>
-        <a href="PEditPass.php?userId=<?= htmlspecialchars($userId) ?>" class="btn btn-warning">Thay đổi mật khẩu</a></center>
+        <center>
+            <a href="PEditInfo.php?userId=<?= htmlspecialchars($userId) ?>" class="btn btn-primary">Thay đổi thông tin</a>
+            <a href="PEditPass.php?userId=<?= htmlspecialchars($userId) ?>" class="btn btn-warning">Thay đổi mật khẩu</a>
+            <button type="button" class="btn btn-info" onclick="showRecoveryCode()">Xem mã khôi phục</button>
+        </center>
     </div>
+    <!-- Modal -->
+    <div class="modal fade" id="recoveryCodeModal" tabindex="-1" role="dialog" aria-labelledby="recoveryCodeModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="recoveryCodeModalLabel">Mã khôi phục</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <p id="recoveryCodeMessage"></p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Đóng</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script>
+        function showRecoveryCode() {
+            const userId = <?= json_encode($userId) ?>;
+            $.ajax({
+                url: '../conn/get_recovery_code.php',
+                type: 'GET',
+                data: { userId: userId },
+                success: function(response) {
+                    $('#recoveryCodeMessage').text('Đây là mã khôi phục dùng một lần của UserId ' + userId + ': ' + response);
+                    $('#recoveryCodeModal').modal('show');
+                }
+            });
+        }
+    </script>
 </body>
 </html>
 <?php

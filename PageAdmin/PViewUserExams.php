@@ -147,6 +147,11 @@ if (isset($_POST['reattempt'])) {
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Xem các bài thi đã tham gia</title>
     <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        tr {
+            text-align: center;
+        }
+    </style>
 </head>
 <body>
     <header class="bg-primary text-white text-center py-3">
@@ -164,7 +169,7 @@ if (isset($_POST['reattempt'])) {
                         <input type="text" class="form-control" id="userId" name="userId" value="<?= htmlspecialchars($user['userId']) ?>" readonly>
                     </div>
                     <div class="form-group col-md-4">
-                        <label for="fullName">Full Name</label>
+                        <label for="fullName">Họ và tên</label>
                         <input type="text" class="form-control" id="fullName" name="fullName" value="<?= htmlspecialchars($user['fullName']) ?>" readonly>
                     </div>
                     <div class="form-group col-md-4">
@@ -174,15 +179,15 @@ if (isset($_POST['reattempt'])) {
                 </div>
                 <div class="form-row">
                     <div class="form-group col-md-4">
-                        <label for="phone">Phone</label>
+                        <label for="phone">Số điện thoại</label>
                         <input type="text" class="form-control" id="phone" name="phone" value="<?= htmlspecialchars($user['phone']) ?>" readonly>
                     </div>
                     <div class="form-group col-md-4">
-                        <label for="class">Class</label>
+                        <label for="class">Lớp</label>
                         <input type="text" class="form-control" id="class" name="class" value="<?= htmlspecialchars($user['class']) ?>" readonly>
                     </div>
                     <div class="form-group col-md-4">
-                        <label for="year">Year</label>
+                        <label for="year">Năm nhập học</label>
                         <input type="text" class="form-control" id="year" name="year" value="<?= htmlspecialchars($user['year']) ?>" readonly>
                     </div>
                 </div>
@@ -193,14 +198,14 @@ if (isset($_POST['reattempt'])) {
             <thead>
                 <tr>
                     <th>ExamId</th>
-                    <th>ExamTitle</th>
-                    <th>Duration</th>
-                    <th>NumOfQues</th>
-                    <th>Subject</th>
-                    <th>Difficult</th>
-                    <th>Score</th>
-                    <th>TimeStart</th>
-                    <th>TimeSubmit</th>
+                    <th>Tên đề thi</th>
+                    <th>Thời gian</th>
+                    <th>Số lượng câu hỏi</th>
+                    <th>Môn học</th>
+                    <th>Độ khó</th>
+                    <th>Điểm</th>
+                    <th>Bắt đầu vào lúc</th>
+                    <th>Nộp bài vào lúc</th>
                     <th>Hành động</th>
                 </tr>
             </thead>

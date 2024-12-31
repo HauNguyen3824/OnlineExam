@@ -69,7 +69,7 @@ if (empty($auids)) {
 <body>
     <?php include '../template/TmenuUser.php'; ?>
     <header class="bg-primary text-white text-center py-3">
-        <h1>Lịch sử làm bài</h1>
+        <h1>Lịch sử bài thi</h1>
     </header>
     <div class="container mt-4">
         <table class="table table-bordered mt-4">

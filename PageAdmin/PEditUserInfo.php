@@ -95,7 +95,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                             <input type="text" class="form-control" id="userId" name="userId" value="<?= htmlspecialchars($user['userId']) ?>" readonly>
                         </div>
                         <div class="form-group col-md-4">
-                            <label for="fullName">Full Name</label>
+                            <label for="fullName">Họ và tên</label>
                             <input type="text" class="form-control" id="fullName" name="fullName" value="<?= htmlspecialchars($user['fullName']) ?>" readonly>
                         </div>
                         <div class="form-group col-md-4">
@@ -105,15 +105,15 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                     </div>
                     <div class="form-row">
                         <div class="form-group col-md-4">
-                            <label for="phone">Phone</label>
+                            <label for="phone">Số điện thoại</label>
                             <input type="text" class="form-control" id="phone" name="phone" value="<?= htmlspecialchars($user['phone']) ?>" readonly>
                         </div>
                         <div class="form-group col-md-4">
-                            <label for="class">Class</label>
+                            <label for="class">Lớp</label>
                             <input type="text" class="form-control" id="class" name="class" value="<?= htmlspecialchars($user['class']) ?>" readonly>
                         </div>
                         <div class="form-group col-md-4">
-                            <label for="year">Year</label>
+                            <label for="year">Năm nhập học</label>
                             <input type="text" class="form-control" id="year" name="year" value="<?= htmlspecialchars($user['year']) ?>" readonly>
                         </div>
                     </div>
@@ -121,8 +121,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                         <input type="checkbox" class="form-check-input" id="allowEdit" name="allowEdit" onclick="toggleEdit()">
                         <label class="form-check-label" for="allowEdit">Cho phép chỉnh sửa</label>
                     </div>
+                    <center>
                     <button type="submit" class="btn btn-primary">Xác nhận thay đổi</button>
                     <button type="button" class="btn btn-secondary" onclick="confirmBack()">Quay lại</button>
+                    </center>
                 </form>
             </div>
         </div>

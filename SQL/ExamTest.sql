@@ -12,7 +12,8 @@ CREATE TABLE IF NOT EXISTS Users (
     Phone INT,
     Role VARCHAR(100) NOT NULL,
     Class INT,
-    Year INT
+    Year INT,
+    RecoveryCode VARCHAR(100)
 ) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
 
 -- Tạo bảng Questions

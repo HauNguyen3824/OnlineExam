@@ -51,6 +51,12 @@ if (empty($examIds)) {
     <title>Danh sách đề thi</title>
     <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
     <style>
+        .status-done {
+            color: green;
+        }
+        .status-not-done {
+            color: red;
+        }
         tr {
             text-align: center;
         }
@@ -71,13 +77,14 @@ if (empty($examIds)) {
                     <th>Số lượng câu hỏi</th>
                     <th>Môn</th>
                     <th>Độ khó</th>
+                    <th>Trạng thái</th>
                     <th>Hành động</th>
                 </tr>
             </thead>
             <tbody>
                 <?php if ($noExams): ?>
                     <tr>
-                        <td colspan="7" class="text-center">Người dùng này chưa có đề thi nào.</td>
+                        <td colspan="8" class="text-center">Hiện tại bạn chưa có đề thi nào.</td>
                     </tr>
                 <?php else: ?>
                     <?php while ($exam = $result_exams->fetch_assoc()): ?>
@@ -89,7 +96,33 @@ if (empty($examIds)) {
                             <td><?= htmlspecialchars($exam['Subject']) ?></td>
                             <td><?= htmlspecialchars($exam['Difficult']) ?></td>
                             <td>
-                                <a href="PExamDetail.php?examId=<?= htmlspecialchars($exam['ExamId']) ?>&userId=<?= htmlspecialchars($userId) ?>" class="btn btn-primary">Xem chi tiết</a>
+                                <?php
+                                // Lấy AUId từ bảng AddUser dựa vào userId và examId
+                                $examId = $exam['ExamId'];
+                                $sql_auid = "SELECT AUId FROM AddUser WHERE ExamId = ? AND UserId = ?";
+                                $stmt_auid = $conn->prepare($sql_auid);
+                                $stmt_auid->bind_param("ss", $examId, $userId);
+                                $stmt_auid->execute();
+                                $result_auid = $stmt_auid->get_result();
+                                $auid_row = $result_auid->fetch_assoc();
+                                $stmt_auid->close();
+                                $auid = $auid_row['AUId'];
+
+                                // Kiểm tra trạng thái làm bài
+                                $sql_check_result = "SELECT COUNT(*) as count FROM results WHERE AUId = ?";
+                                $stmt_check_result = $conn->prepare($sql_check_result);
+                                $stmt_check_result->bind_param("s", $auid);
+                                $stmt_check_result->execute();
+                                $result_check_result = $stmt_check_result->get_result();
+                                $row_check_result = $result_check_result->fetch_assoc();
+                                $stmt_check_result->close();
+                                $status = $row_check_result['count'] > 0 ? 'Đã làm' : 'Chưa làm';
+                                $status_class = $row_check_result['count'] > 0 ? 'status-done' : 'status-not-done';
+                                echo "<span class='$status_class'>$status</span>";
+                                ?>
+                            </td>
+                            <td>
+                                <a href="PDoingExam.php?examId=<?= htmlspecialchars($exam['ExamId']) ?>&userId=<?= htmlspecialchars($userId) ?>" class="btn btn-primary">Làm bài</a>
                             </td>
                         </tr>
                     <?php endwhile; ?>

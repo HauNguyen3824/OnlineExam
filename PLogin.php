@@ -113,6 +113,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                             <label class="form-check-label" for="showPassword">Hiển thị mật khẩu</label>
                         </div>
                         <button type="submit" class="btn btn-primary">Đăng nhập</button>
+                        <div class="form-group">
+                            <p>Quên mật khẩu? <a href="PRecovery.php" class="text-primary">Nhập mã khôi phục</a></p>
+                        </div>
                     </form>
                 </div>
             </div>

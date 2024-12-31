@@ -77,11 +77,11 @@ $stmt_result->close();
                         Thông tin đề thi
                     </div>
                     <div class="card-body">
-                        <p><strong>Exam Title:</strong> <?= htmlspecialchars($exam['ExamTitle']) ?></p>
-                        <p><strong>Duration:</strong> <?= htmlspecialchars($exam['Duration']) ?></p>
-                        <p><strong>Number of Questions:</strong> <?= htmlspecialchars($exam['NumOfQues']) ?></p>
-                        <p><strong>Subject:</strong> <?= htmlspecialchars($exam['Subject']) ?></p>
-                        <p><strong>Difficulty:</strong> <?= htmlspecialchars($exam['Difficult']) ?></p>
+                        <p><strong>Tên đề thi: </strong> <?= htmlspecialchars($exam['ExamTitle']) ?></p>
+                        <p><strong>Thời gian:</strong> <?= htmlspecialchars($exam['Duration']) ?></p>
+                        <p><strong>Số lượng câu hỏi: </strong> <?= htmlspecialchars($exam['NumOfQues']) ?></p>
+                        <p><strong>Môn:</strong> <?= htmlspecialchars($exam['Subject']) ?></p>
+                        <p><strong>Độ khó:</strong> <?= htmlspecialchars($exam['Difficult']) ?></p>
                     </div>
                 </div>
             </div>
@@ -91,9 +91,9 @@ $stmt_result->close();
                         Thông tin người dùng
                     </div>
                     <div class="card-body">
-                        <p><strong>Full Name:</strong> <?= htmlspecialchars($user['FullName']) ?></p>
-                        <p><strong>Class:</strong> <?= htmlspecialchars($user['Class']) ?></p>
-                        <p><strong>Year:</strong> <?= htmlspecialchars($user['Year']) ?></p>
+                        <p><strong>Họ và tên:</strong> <?= htmlspecialchars($user['FullName']) ?></p>
+                        <p><strong>Lớp:</strong> <?= htmlspecialchars($user['Class']) ?></p>
+                        <p><strong>Năm nhập học:</strong> <?= htmlspecialchars($user['Year']) ?></p>
                     </div>
                 </div>
             </div>
@@ -103,9 +103,9 @@ $stmt_result->close();
                 Thông tin kết quả
             </div>
             <div class="card-body">
-                <p><strong>Score:</strong> <?= htmlspecialchars($result['Score']) ?></p>
-                <p><strong>Time Start:</strong> <?= htmlspecialchars($result['TimeStart']) ?></p>
-                <p><strong>Time Submit:</strong> <?= htmlspecialchars($result['TimeSubmit']) ?></p>
+                <p><strong>Điểm:</strong> <?= htmlspecialchars($result['Score']) ?></p>
+                <p><strong>Bắt đầu làm bài vào:</strong> <?= htmlspecialchars($result['TimeStart']) ?></p>
+                <p><strong>Nộp bài lúc: </strong> <?= htmlspecialchars($result['TimeSubmit']) ?></p>
             </div>
         </div>
         <div class="text-center mt-4">

@@ -65,7 +65,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         <form method="post" onsubmit="return confirmSubmit()">
             <div class="form-group">
                 <b><label for="content">Nội dung tin nhắn:</label></b>
-                <textarea class="form-control" id="content" name="content" rows="5" required></textarea>
+                <textarea class="form-control" id="content" name="content" rows="5" placeholder = "Nhập nội dung báo cáo ở đây..." required></textarea>
             </div>
             <center><button type="submit" class="btn btn-primary">Gửi</button>
             <button type="button" class="btn btn-secondary" onclick="confirmBack()">Quay lại</button></center>

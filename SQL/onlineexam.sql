@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Máy chủ: 127.0.0.1
--- Thời gian đã tạo: Th12 27, 2024 lúc 09:49 AM
+-- Thời gian đã tạo: Th12 28, 2024 lúc 10:12 AM
 -- Phiên bản máy phục vụ: 10.4.32-MariaDB
 -- Phiên bản PHP: 8.0.30
 
@@ -97,7 +97,9 @@ CREATE TABLE `chat` (
 --
 
 INSERT INTO `chat` (`ChatId`, `Content`, `Seen`, `userid`) VALUES
-('1', 'admin dep trai oi ciu em voi, em bi loi lam bai, cho em lam lai di', 1, '2210123');
+('1', 'admin dep trai oi ciu em voi, em bi loi lam bai, cho em lam lai di', 1, '2210123'),
+('2', 'admin dep trai oi', 1, '2210123'),
+('3', 'xin chao', 1, 'admin2');
 
 -- --------------------------------------------------------
 
@@ -179,7 +181,6 @@ CREATE TABLE `results` (
 --
 
 INSERT INTO `results` (`ResultId`, `AUId`, `Score`, `TimeStart`, `TimeSubmit`) VALUES
-('2AXlp0eVWd', 'AU020', 0, '2024-12-27 09:22:29', '2024-12-27 09:23:00'),
 ('pZJumL3Sib', 'AU631', 2, '2024-12-27 09:18:50', '2024-12-27 09:19:26'),
 ('tDGj9I3LQl', 'AU706', 1, '2024-12-27 09:23:42', '2024-12-27 09:24:03');
 
@@ -205,16 +206,13 @@ INSERT INTO `useranswers` (`AnsId`, `UserChoice`, `IsCorrect`, `QuesId`, `auid`)
 ('8QX4gONCYn', '2', 0, 'QUES7532', 'AU706'),
 ('Anlj1cGb9s', '3', 1, 'QUES8139', 'AU706'),
 ('ayguzU4DtZ', '1', 0, 'QUES3173', 'AU631'),
-('cTm9EIOHjW', '1', 0, 'QUES3173', 'AU020'),
 ('dGRpITaoDQ', '2', 0, 'QUES7109', 'AU631'),
 ('DJlFiQk3og', '1', 0, 'QUES000', 'AU631'),
-('Gh5MwHPWtE', '0', 0, 'undefined', 'AU020'),
 ('hycrJHMtZa', '1', 1, 'QUES7532', 'AU631'),
 ('ik0ywQpOGL', '1', 0, 'QUES000', 'AU706'),
 ('JsqldCw7Dr', '1', 0, 'QUES3173', 'AU706'),
 ('nwEFB0AgYS', '2', 1, 'QUES3209', 'AU631'),
 ('p8CeARWoj2', '1', 0, 'QUES3209', 'AU706'),
-('ypDwlXYcFo', '1', 0, 'QUES000', 'AU020'),
 ('ZHlo7DmP86', '2', 0, 'QUES7109', 'AU706');
 
 -- --------------------------------------------------------
@@ -229,22 +227,23 @@ CREATE TABLE `users` (
   `Username` varchar(100) NOT NULL,
   `Password` varchar(100) NOT NULL,
   `Email` varchar(100) DEFAULT NULL,
-  `Phone` int(11) DEFAULT NULL,
+  `Phone` varchar(10) DEFAULT NULL,
   `Role` varchar(100) NOT NULL,
   `Class` int(11) DEFAULT NULL,
-  `Year` int(11) DEFAULT NULL
+  `Year` int(11) DEFAULT NULL,
+  `RecoveryCode` varchar(10) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- Đang đổ dữ liệu cho bảng `users`
 --
 
-INSERT INTO `users` (`UserId`, `FullName`, `Username`, `Password`, `Email`, `Phone`, `Role`, `Class`, `Year`) VALUES
-('2210123', 'aaaaaa44', '2210123', '$2y$10$YrO97Kl4CMs.uBmFLPudP.sSqHvfL4v7ly9q6cuh5T4N0jzatfDHC', 'aaa@gmail.com', 707653310, 'user', 10, 2022),
-('2410123', 'Tô Thanh Tuấn1', '2410123', '$2y$10$PRYJ5DTy1H2XDyAqJri9feXceEy/uWvlL/EpT7y44zJQ4iUtFLQJa', NULL, NULL, 'user', 10, 2024),
-('admin1', 'Tô Thanh Tuấn', 'admin1', '$2y$10$hSRBdanA6cjpQ3P7oY6Jxe4vWyuNr8AnyGVffcn2d15We9x4wDuTm', 'aaa@gmail.com', 707653310, 'admin', NULL, NULL),
-('admin2', 'Tô Thanh Tuấn', 'admin2', '$2y$10$7InkvxMAzoB0gnS5.owp9uqrPmQvvvhn4eCXyXJEwWhprVTUQYMGW', 'tuan@gmail.com', 707653311, 'admin', NULL, NULL),
-('admin3', 'Tô Thanh Tuấn', 'admin4', '$2y$10$ImJ3f7VaNGXZwYPnm2F9auzEiUL.moqSQWs01V1AiwB3pC1P6ly6i', 'aaa@gmail.com', 707653314, 'admin', NULL, NULL);
+INSERT INTO `users` (`UserId`, `FullName`, `Username`, `Password`, `Email`, `Phone`, `Role`, `Class`, `Year`, `RecoveryCode`) VALUES
+('2210123', 'aaaaaa44', '2210123', '$2y$10$M.G78s3k9bypRZ6aPEvy4OYxNO3hpIJgFC9.F9pRRhbrzJ2jO2RyS', 'aaa@gmail.com', 707653310, 'user', 10, 2022, 'eDGlLX'),
+('2410123', 'Tô Thanh Tuấn1', '2410123', '$2y$10$PRYJ5DTy1H2XDyAqJri9feXceEy/uWvlL/EpT7y44zJQ4iUtFLQJa', NULL, NULL, 'user', 10, 2024, 'aaxGGh'),
+('admin1', 'Tô Thanh Tuấn', 'admin1', '$2y$10$hSRBdanA6cjpQ3P7oY6Jxe4vWyuNr8AnyGVffcn2d15We9x4wDuTm', 'aaa@gmail.com', 707653310, 'admin', NULL, NULL, NULL),
+('admin2', 'Tô Thanh Tuấn', 'admin2', '$2y$10$7InkvxMAzoB0gnS5.owp9uqrPmQvvvhn4eCXyXJEwWhprVTUQYMGW', 'tuan@gmail.com', 707653311, 'admin', NULL, NULL, NULL),
+('admin3', 'Tô Thanh Tuấn', 'admin4', '$2y$10$ImJ3f7VaNGXZwYPnm2F9auzEiUL.moqSQWs01V1AiwB3pC1P6ly6i', 'aaa@gmail.com', 707653314, 'admin', NULL, NULL, NULL);
 
 --
 -- Chỉ mục cho các bảng đã đổ

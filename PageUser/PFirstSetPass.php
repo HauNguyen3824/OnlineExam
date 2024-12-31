@@ -19,18 +19,18 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 // Cập nhật mật khẩu mới vào cơ sở dữ liệu
                 $sql_update = "UPDATE Users SET Password = ? WHERE UserId = ?";
                 $stmt_update = $conn->prepare($sql_update);
-                $stmt_update->bind_param("si", $hashedPassword, $userId);
+                $stmt_update->bind_param("ss", $hashedPassword, $userId);
                 $stmt_update->execute();
 
                 if ($stmt_update->affected_rows > 0) {
                     echo "<script>alert('Mật khẩu đã được cập nhật thành công.');</script>";
-                    header('Location: PMenuUser.php?userId=' . $userId);
+                    header('Location: PMenuUser.php?userId=' . urlencode($userId));
                     exit;
                 } else {
                     $error_message = "Cập nhật mật khẩu thất bại.";
                 }
             } else {
-                $error_message = "Mật khẩu phải ít nhất 8 ký tự, có chữ số và chữ in hoa.";
+                $error_message = "Mật khẩu phải có ít nhất 8 ký tự, có chữ số và chữ in hoa.";
             }
         } else {
             $error_message = "Mật khẩu xác nhận không khớp.";
@@ -80,7 +80,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         <?php if (isset($error_message)): ?>
             <div class="error-message text-center"><?= htmlspecialchars($error_message) ?></div>
         <?php endif; ?>
-        <form method="post" action="">
+        <form method="post" action="PFirstSetPass.php?userId=<?= htmlspecialchars($userId) ?>">
             <div class="form-group">
                 <label for="newPassword">Mật khẩu mới:</label>
                 <input type="password" class="form-control" id="newPassword" name="newPassword" required>

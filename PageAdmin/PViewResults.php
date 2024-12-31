@@ -105,6 +105,9 @@ ksort($score_counts); // Sắp xếp theo điểm số
             max-height: 300px;
             margin: 0 auto;
         }
+        tr {
+            text-align: center;
+        }
     </style>
 </head>
 <body>
@@ -128,11 +131,11 @@ ksort($score_counts); // Sắp xếp theo điểm số
             <thead>
                 <tr>
                     <th>UserId</th>
-                    <th>Full Name</th>
+                    <th>Họ và tên</th>
                     <th>Email</th>
-                    <th>Phone</th>
-                    <th>Class</th>
-                    <th>Year</th>
+                    <th>Số điện thoại</th>
+                    <th>Lớp</th>
+                    <th>Năm nhập học</th>
                     <th>Hành động</th>
                 </tr>
             </thead>

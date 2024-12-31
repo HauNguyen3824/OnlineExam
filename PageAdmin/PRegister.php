@@ -2,49 +2,6 @@
 include('../conn/conn_database.php');
 include('../template/Tmenubar.php');
 
-if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['register'])) {
-  $userId = $_POST['userId'] ?? '';
-  $username = $_POST['username'] ?? '';
-  $password = $_POST['password'] ?? '';
-  $confirmPassword = $_POST['confirmPassword'] ?? '';
-  $fullName = $_POST['fullName'] ?? '';
-  $class = $_POST['class'] ?? '';
-  $year = $_POST['year'] ?? '';
-
-  if ($password !== $confirmPassword) {
-      $error_message = "Mật khẩu và xác nhận mật khẩu không khớp.";
-  } else {
-      // Kiểm tra xem UserId có bị trùng không
-      $sql_check_user = "SELECT * FROM Users WHERE UserId = ?";
-      $stmt_check_user = $conn->prepare($sql_check_user);
-      $stmt_check_user->bind_param("s", $userId);
-      $stmt_check_user->execute();
-      $result_check_user = $stmt_check_user->get_result();
-
-      if ($result_check_user->num_rows > 0) {
-          $error_message = "UserId đã tồn tại.";
-      } else {
-          // Mã hóa mật khẩu
-          $hashed_password = md5($password); // Sử dụng md5 để mã hóa mật khẩu
-
-          // Thêm người dùng mới vào cơ sở dữ liệu
-          $sql_insert_user = "INSERT INTO Users (UserId, Username, Password, FullName, Class, Year, Role) VALUES (?, ?, ?, ?, ?, ?, 'user')";
-          $stmt_insert_user = $conn->prepare($sql_insert_user);
-          $stmt_insert_user->bind_param("ssssss", $userId, $username, $hashed_password, $fullName, $class, $year);
-
-          if ($stmt_insert_user->execute()) {
-              $success_message = "Đăng ký thành công!";
-          } else {
-              $error_message = "Lỗi khi đăng ký: " . $stmt_insert_user->error;
-          }
-
-          $stmt_insert_user->close();
-      }
-
-      $stmt_check_user->close();
-  }
-}
-
 // Function to generate a user ID
 function generateUserId($class, $year, $orderNumber)
 {
@@ -66,6 +23,17 @@ function generateAdminId($conn) {
   }
 
   return  'admin' . strval(intval($max_id) + 1);
+}
+
+// Function to generate a recovery code
+function generateRecoveryCode($length = 6) {
+  $characters = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
+  $charactersLength = strlen($characters);
+  $recoveryCode = '';
+  for ($i = 0; $length > $i; $i++) {
+      $recoveryCode .= $characters[rand(0, $charactersLength - 1)];
+  }
+  return $recoveryCode;
 }
 
 // Form submission processing
@@ -101,11 +69,12 @@ if (isset($_POST['submit'])) {
                 $password = '123';
                 $passwordHashed = password_hash($password, PASSWORD_DEFAULT);
                 $role = 'user';
-                 $sql = "INSERT INTO Users (UserId, FullName, Username, Password, Role, Class, Year)
-                            VALUES ('$userid', '$fullname', '$username', '$passwordHashed', '$role', '$class', '$year')";
+                $recoveryCode = generateRecoveryCode();
+                 $sql = "INSERT INTO Users (UserId, FullName, Username, Password, Role, Class, Year, RecoveryCode)
+                            VALUES ('$userid', '$fullname', '$username', '$passwordHashed', '$role', '$class', '$year', '$recoveryCode')";
 
                         if ($conn->query($sql) === TRUE) {
-                            echo "<script>alert('User registered successfully!');</script>";
+                            echo "<script>alert('Đăng ký User thành công!');</script>";
                          } else {
                              echo "Error: " . $sql . "<br>" . $conn->error;
                         }
@@ -139,7 +108,7 @@ if (isset($_POST['submit'])) {
                         VALUES ('$userid', '$fullname', '$username', '$passwordHashed', '$email', '$phone', '$role')";
 
                      if ($conn->query($sql) === TRUE) {
-                        echo "<script>alert('Admin registered successfully!');</script>";
+                        echo "<script>alert('Đăng ký Admin thành công!');</script>";
                     } else {
                       echo "Error: " . $sql . "<br>" . $conn->error;
                   }
@@ -183,7 +152,7 @@ if (isset($_POST['submit'])) {
 
                                  <div class="form-group">
                                       <label for="fullname">Tên đầy đủ</label>
-                                       <input type="text" class="form-control" name="fullname" id="fullname" placeholder="Full Name" required>
+                                       <input type="text" class="form-control" name="fullname" id="fullname" placeholder="Họ và tên" required>
                                    </div>
                                   <div class="form-group">
                                        <label for="class">Lớp</label>
@@ -196,12 +165,12 @@ if (isset($_POST['submit'])) {
 
                                   <div class="form-group">
                                         <label for="orderNumber">Số thứ tự</label>
-                                         <input type="text" class="form-control" name="orderNumber" id="orderNumber" placeholder="Số thứ tự (e.g., 001)" required>
+                                         <input type="text" class="form-control" name="orderNumber" id="orderNumber" placeholder="Số thứ tự" required>
                                     </div>
 
                                  <div class="form-group">
                                       <label for="schoolyear">Năm học</label>
-                                      <input type="text" class="form-control" name="schoolyear" id="schoolyear" placeholder="School Year (e.g., 2024)" required>
+                                      <input type="text" class="form-control" name="schoolyear" id="schoolyear" placeholder="Năm học" required>
                                  </div>
 
                                 <input type="hidden" name="formType" id="formType" value="user"/>
@@ -219,23 +188,23 @@ if (isset($_POST['submit'])) {
                                  <!-- Tên đầy đủ -->
                                 <div class="form-group">
                                   <label for="fullname">Tên đầy đủ</label>
-                                 <input type="text" class="form-control" name="fullname" id="fullname" placeholder="Full Name" required>
+                                 <input type="text" class="form-control" name="fullname" id="fullname" placeholder="Họ và tên" required>
                                </div>
                                     <!-- Tên đăng nhập -->
                                <div class="form-group">
-                                <label for="username">Username</label>
-                                    <input type="text" class="form-control" name="username" id="username" placeholder="Username" required>
+                                <label for="username">Tên đăng nhập</label>
+                                    <input type="text" class="form-control" name="username" id="username" placeholder="Tên đăng nhập" required>
                               </div>
 
                                  <!-- Mật khẩu -->
                                 <div class="form-group">
-                                  <label for="password">Password</label>
-                                    <input type="password" class="form-control" name="password" id="password" placeholder="Password" required>
+                                  <label for="password">Mật khẩu</label>
+                                    <input type="password" class="form-control" name="password" id="password" placeholder="Mật khẩu" required>
                                 </div>
                                 <!-- Nhập lại mật khẩu -->
                                 <div class="form-group">
-                                   <label for="confirmPassword">Xác nhận Password</label>
-                                   <input type="password" class="form-control" name="confirmPassword" id="confirmPassword" placeholder="Confirm Password" required>
+                                   <label for="confirmPassword">Xác nhận mật khẩu</label>
+                                   <input type="password" class="form-control" name="confirmPassword" id="confirmPassword" placeholder="Nhập lại mật khẩu" required>
                                 </div>
 
                                   <!-- Password visibility toggle (checkbox) -->
@@ -252,7 +221,7 @@ if (isset($_POST['submit'])) {
                                     <!-- Số điện thoại -->
                                    <div class="form-group">
                                        <label for="phone">Số điện thoại</label>
-                                      <input type="tel" class="form-control" name="phone" id="phone" placeholder="Phone" required>
+                                      <input type="tel" class="form-control" name="phone" id="phone" placeholder="Số điện thoại" required>
                                  </div>
 
                                  <input type="hidden" name="formType" id="formType" value="admin"/>
@@ -277,12 +246,12 @@ if (isset($_POST['submit'])) {
 
 
            if(schoolyear.length !== 4) {
-               alert('School Year must have 4 digits (e.g., 2024)');
+               alert('Năm học phải bao gồm 4 chữ số (Ví dụ: 2024)');
                return false;
           }
 
           if (orderNumber.length !== 3) {
-                alert('Order Number must have 3 digits (e.g., 001)');
+                alert('Số thứ tự phải bao gồm 3 chữ số (Ví dụ: 001)');
                  return false;
               }
 

@@ -63,6 +63,9 @@ $result_results = $stmt_results->get_result();
             max-height: 800px;
             margin: 0 auto;
         }
+        tr {
+            text-align: center;
+        }
     </style>
 </head>
 <body>
@@ -81,13 +84,13 @@ $result_results = $stmt_results->get_result();
             </div>
         </div>
         <div class="mt-4">
-            <h2>UserAnswers</h2>
+            <h2>Bài làm của bạn: </h2>
             <table class="table table-bordered">
                 <thead>
                     <tr>
                         <th>AnsId</th>
-                        <th>UserChoice</th>
-                        <th>IsCorrect</th>
+                        <th>Đáp án của bạn</th>
+                        <th>Đúng/Sai</th>
                         <th>QuesId</th>
                     </tr>
                 </thead>

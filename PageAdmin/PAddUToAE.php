@@ -79,32 +79,32 @@ if ($stmt_exam_users) {
 <div class="container mt-4">
     <h2 class="text-primary">Thông tin đề</h2>
     <form id="form" method="post" action="PAddUToAE.php">
-        <center><div class="row mb-3">
+        <div class="row mb-3">
             <div class="col-md-2">
                 <label for="examId" class="form-label">Exam ID</label>
                 <input type="text" id="examId" name="examId" class="form-control" value="<?php echo htmlspecialchars($examId); ?>" readonly>
             </div>
             <div class="col-md-3">
-                <label for="examTitle" class="form-label">Tên đề thi</label>
+                <label for="examTitle" class="form-label">Exam Title</label>
                 <input type="text" id="examTitle" name="examTitle" class="form-control" value="<?php echo htmlspecialchars($examTitle); ?>" readonly>
             </div>
             <div class="col-md-2">
-                <label for="duration" class="form-label">Thời gian</label>
+                <label for="duration" class="form-label">Duration</label>
                 <input type="text" id="duration" name="duration" class="form-control" value="<?php echo htmlspecialchars($duration); ?>" readonly>
             </div>
             <div class="col-md-2">
-                <label for="numOfQues" class="form-label">Số lượng câu hỏi</label>
+                <label for="numOfQues" class="form-label">Num of Ques</label>
                 <input type="text" id="numOfQues" name="numOfQues" class="form-control" value="<?php echo htmlspecialchars($numOfQues); ?>" readonly>
             </div>
             <div class="col-md-2">
-                <label for="subject" class="form-label">Môn</label>
+                <label for="subject" class="form-label">Subject</label>
                 <input type="text" id="subject" name="subject" class="form-control" value="<?php echo htmlspecialchars($subject); ?>" readonly>
             </div>
             <div class="col-md-1">
-                <label for="difficult" class="form-label">Độ khó</label>
+                <label for="difficult" class="form-label">Difficult</label>
                 <input type="text" id="difficult" name="difficult" class="form-control" value="<?php echo htmlspecialchars($difficult); ?>" readonly>
             </div>
-        </div></center>
+        </div>
     </form>
 </div>
 <div class="container mt-4">
@@ -224,7 +224,7 @@ if ($stmt_exam_users) {
     }
 
     $('#exit-add-users').on('click', function() {
-        if (confirm("Bạn có chắc muốn thoát? Dữ liệu sẽ không được lưu.")) {
+        if (confirm("Bạn có chắc muốn thoát? Dữ liệu sẽ bị mất.")) {
             window.location.href = "PExamManagement.php"; // Ví dụ
         }
     });

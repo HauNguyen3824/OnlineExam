@@ -177,8 +177,9 @@ if (isset($_POST['resetPassword'])) {
                                 <form id="resetPasswordForm-<?= htmlspecialchars($row['userId']) ?>" method="post" style="display:inline;">
                                     <input type="hidden" name="userId" value="<?= htmlspecialchars($row['userId']) ?>">
                                     <input type="hidden" name="resetPassword" value="1">
-                                    <button type="button" class="btn btn-danger" onclick="confirmReset('<?= htmlspecialchars($row['userId']) ?>')">Đặt mật khẩu mặc định</button>
+                                    <button type="button" class="btn btn-danger" onclick="confirmReset('<?= htmlspecialchars($row['userId']) ?>')">Đặt lại mật khẩu mặc định</button>
                                 </form>
+                                <button type="button" class="btn btn-info" onclick="showRecoveryCode('<?= htmlspecialchars($row['userId']) ?>')">Mã khôi phục</button>
                             </td>
                         </tr>
                     <?php endwhile; ?>
@@ -189,15 +190,50 @@ if (isset($_POST['resetPassword'])) {
                 <?php endif; ?>
             </tbody>
         </table>
-        <div class="d-flex justify-content-between">
-            <a href="?page=<?= max(1, $page - 1) ?>&class=<?= htmlspecialchars($classFilter) ?>&year=<?= htmlspecialchars($yearFilter) ?>&fullName=<?= htmlspecialchars($fullNameFilter) ?>" class="btn btn-primary <?= $page <= 1 ? 'disabled' : '' ?>">Trước</a>
+        <center>
             <span>Trang <?= $page ?> / <?= $total_pages ?></span>
+            <br>
+            <a href="?page=<?= max(1, $page - 1) ?>&class=<?= htmlspecialchars($classFilter) ?>&year=<?= htmlspecialchars($yearFilter) ?>&fullName=<?= htmlspecialchars($fullNameFilter) ?>" class="btn btn-primary <?= $page <= 1 ? 'disabled' : '' ?>">Trước</a>            
             <a href="?page=<?= min($total_pages, $page + 1) ?>&class=<?= htmlspecialchars($classFilter) ?>&year=<?= htmlspecialchars($yearFilter) ?>&fullName=<?= htmlspecialchars($fullNameFilter) ?>" class="btn btn-primary <?= $page >= $total_pages ? 'disabled' : '' ?>">Sau</a>
+            
+            
+        </center>
+    </div>
+    <!-- Modal -->
+    <div class="modal fade" id="recoveryCodeModal" tabindex="-1" role="dialog" aria-labelledby="recoveryCodeModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="recoveryCodeModalLabel">Mã khôi phục</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <p id="recoveryCodeMessage"></p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Đóng</button>
+                </div>
+            </div>
         </div>
     </div>
     <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script>
+        function showRecoveryCode(userId) {
+            $.ajax({
+                url: '../conn/get_recovery_code.php',
+                type: 'GET',
+                data: { userId: userId },
+                success: function(response) {
+                    $('#recoveryCodeMessage').text('Đây là mã khôi phục dùng một lần của userId ' + userId + ': ' + response);
+                    $('#recoveryCodeModal').modal('show');
+                }
+            });
+        }
+    </script>
 </body>
 </html>
 <?php

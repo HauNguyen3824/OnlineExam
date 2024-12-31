@@ -119,19 +119,19 @@ if (isset($_POST['save'])) {
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
      <style>
             .answer-list {
-                white-space: pre-line; /* Enable newlines and extra whitespaces on displayed value*/
-            }
+                    white-space: pre-line; /* Enable newlines and extra whitespaces on displayed value*/
+                  }
 
-            .hidden {
-                display: none; /* Use to dynamically control options via Jquery */
-            }
+                .hidden {
+                    display: none; /* Use to dynamically control options via Jquery */
+                    }
 
-            .correct-answers-wrapper { /* correct layout control */
-                 position: relative;
-            }
-            tr {
+               .correct-answers-wrapper { /* correct layout control */
+                   position: relative;
+               }
+               tr {
                 text-align: center;
-            }
+               }
          </style>
   </head>
  <body>

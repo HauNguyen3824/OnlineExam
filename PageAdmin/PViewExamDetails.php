@@ -123,23 +123,23 @@ while ($row = $result_answers->fetch_assoc()) {
                             <input type="text" class="form-control" id="examId" name="examId" value="<?= htmlspecialchars($exam['examId']) ?>" readonly>
                         </div>
                         <div class="form-group">
-                            <label for="examTitle">ExamTitle</label>
+                            <label for="examTitle">Tên đề thi</label>
                             <input type="text" class="form-control" id="examTitle" name="examTitle" value="<?= htmlspecialchars($exam['examTitle']) ?>" readonly>
                         </div>
                         <div class="form-group">
-                            <label for="duration">Duration</label>
+                            <label for="duration">Thời gian</label>
                             <input type="text" class="form-control" id="duration" name="duration" value="<?= htmlspecialchars($exam['duration']) ?>" readonly>
                         </div>
                         <div class="form-group">
-                            <label for="numOfQues">NumOfQues</label>
+                            <label for="numOfQues">Số lượng câu hỏi</label>
                             <input type="text" class="form-control" id="numOfQues" name="numOfQues" value="<?= htmlspecialchars($exam['numOfQues']) ?>" readonly>
                         </div>
                         <div class="form-group">
-                            <label for="subject">Subject</label>
+                            <label for="subject">Môn</label>
                             <input type="text" class="form-control" id="subject" name="subject" value="<?= htmlspecialchars($exam['subject']) ?>" readonly>
                         </div>
                         <div class="form-group">
-                            <label for="difficult">Difficult</label>
+                            <label for="difficult">Độ khó</label>
                             <input type="text" class="form-control" id="difficult" name="difficult" value="<?= htmlspecialchars($exam['difficult']) ?>" readonly>
                         </div>
                     </div>
@@ -156,7 +156,7 @@ while ($row = $result_answers->fetch_assoc()) {
                             <input type="text" class="form-control" id="userId" name="userId" value="<?= htmlspecialchars($user['userId']) ?>" readonly>
                         </div>
                         <div class="form-group">
-                            <label for="fullName">Full Name</label>
+                            <label for="fullName">Họ và tên</label>
                             <input type="text" class="form-control" id="fullName" name="fullName" value="<?= htmlspecialchars($user['fullName']) ?>" readonly>
                         </div>
                     </div>
@@ -167,15 +167,15 @@ while ($row = $result_answers->fetch_assoc()) {
                     </div>
                     <div class="card-body">
                         <div class="form-group">
-                            <label for="score">Score</label>
+                            <label for="score">Điểm</label>
                             <input type="text" class="form-control" id="score" name="score" value="<?= htmlspecialchars($result['Score']) ?>" readonly>
                         </div>
                         <div class="form-group">
-                            <label for="timeStart">Time Start</label>
+                            <label for="timeStart">Bắt đầu vào lúc</label>
                             <input type="text" class="form-control" id="timeStart" name="timeStart" value="<?= htmlspecialchars($result['TimeStart']) ?>" readonly>
                         </div>
                         <div class="form-group">
-                            <label for="timeSubmit">Time Submit</label>
+                            <label for="timeSubmit">Nộp bài vào lúc</label>
                             <input type="text" class="form-control" id="timeSubmit" name="timeSubmit" value="<?= htmlspecialchars($result['TimeSubmit']) ?>" readonly>
                         </div>
                     </div>
@@ -186,8 +186,8 @@ while ($row = $result_answers->fetch_assoc()) {
         <table class="table table-bordered mt-4">
             <thead>
                 <tr>
-                    <th>UserChoice</th>
-                    <th>IsCorrect</th>
+                    <th>Đáp án của thí sinh</th>
+                    <th>Đúng/Sai</th>
                 </tr>
             </thead>
             <tbody>

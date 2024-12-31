@@ -160,23 +160,23 @@ while ($row = $result_ques_ids->fetch_assoc()) {
                     <input type="text" class="form-control" id="examId" name="examId" value="<?= htmlspecialchars($examId) ?>" readonly>
                 </div>
                 <div class="form-group">
-                    <label for="examTitle">Exam Title</label>
+                    <label for="examTitle">Tên đề thi</label>
                     <input type="text" class="form-control" id="examTitle" name="examTitle" value="<?= htmlspecialchars($exam['ExamTitle']) ?>" readonly>
                 </div>
                 <div class="form-group">
-                    <label for="duration">Duration</label>
+                    <label for="duration">Thời gian</label>
                     <input type="text" class="form-control" id="duration" name="duration" value="<?= htmlspecialchars($exam['Duration']) ?>" readonly>
                 </div>
                 <div class="form-group">
-                    <label for="numOfQues">Number of Questions</label>
+                    <label for="numOfQues">Số lượng câu hỏi</label>
                     <input type="text" class="form-control" id="numOfQues" name="numOfQues" value="<?= htmlspecialchars($exam['NumOfQues']) ?>" readonly>
                 </div>
                 <div class="form-group">
-                    <label for="subject">Subject</label>
+                    <label for="subject">Môn</label>
                     <input type="text" class="form-control" id="subject" name="subject" value="<?= htmlspecialchars($exam['Subject']) ?>" readonly>
                 </div>
                 <div class="form-group">
-                    <label for="difficult">Difficulty</label>
+                    <label for="difficult">Độ khó</label>
                     <input type="text" class="form-control" id="difficult" name="difficult" value="<?= htmlspecialchars($exam['Difficult']) ?>" readonly>
                 </div>
             </div>

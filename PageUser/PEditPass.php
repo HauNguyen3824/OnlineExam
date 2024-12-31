@@ -99,10 +99,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 <input type="checkbox" class="form-check-input" id="showPasswords" onclick="togglePasswordVisibility()">
                 <label class="form-check-label" for="showPasswords">Hiển thị mật khẩu</label>
             </div>
-            <div class="btn-container mt-4">
+            <center>
                 <button type="button" class="btn btn-secondary" onclick="confirmBack()">Quay lại</button>
                 <button type="submit" class="btn btn-primary" onclick="return confirm('Bạn có chắc chắn với lựa chọn này?')">Lưu</button>
-            </div>
+            </center>
         </form>
     </div>
     <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>

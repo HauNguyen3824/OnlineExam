@@ -106,7 +106,7 @@ $conn->close();
         <div class="container mt-4">
             <h2 class="text-primary">Thông tin đề</h2>
             <form id="form">
-                <center><div class="row mb-3">
+                <div class="row mb-3">
                     <div class="col-md-2">
                         <label for="examId" class="form-label">Exam ID</label>
                         <input type="text" id="examId" name="examId" class="form-control" value="<?php echo htmlspecialchars($examId); ?>" readonly>
@@ -131,7 +131,7 @@ $conn->close();
                         <label for="difficult" class="form-label">Độ khó</label>
                         <input type="text" id="difficult" name="difficult" class="form-control" value="<?php echo htmlspecialchars($difficult); ?>" readonly>
                     </div>
-                </div></center>
+                </div>
             </form>
         </div>
       <div class="container mt-4">
@@ -339,7 +339,7 @@ $conn->close();
     }
 
     $('#exit-add-questions').on('click', function() {
-        if (confirm("Bạn có chắc muốn thoát? Dữ liệu sẽ không được lưu.")) {
+        if (confirm("Bạn có chắc muốn thoát? Dữ liệu sẽ bị mất.")) {
 
              // Redirect  về trang  danh sách đề thi  hoặc xử lý  thoát theo  ý của bạn
             window.location.href = "PExamManagement.php"; // Example
@@ -447,5 +447,4 @@ $conn->close();
 </html>
 <?php
 include('../template/Tfooter.php');
-$conn->close();
 ?>
